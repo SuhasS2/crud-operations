@@ -1,21 +1,19 @@
 const express = require("express");
-var app = express();
-const router = express.Router();
+//var app = express();
+//const router = express.Router();
 
 const createData = require('./controllers/create');
 const readData = require('./controllers/read');
 const updateData = require('./controllers/update');
-const deleteData = require('./controllers/delete')
+const deleteData = require('./controllers/delete');
 
-module.exports = function () {
+exports.init = (router) => {
+  router.route('/').get((req, res) => {
+    res.status(200).json({ message: 'Welcome' });
+  });
 
-    router.use('/create-data',createData());
-
-    router.use('/read-data',readData());
-
-    router.use('/update-data',updateData());
-
-    router.use('/delete-data',deleteData());
-
-  return router;
-}
+  router.route('/create-data').post(createData.createTestMetaData)
+  router.route('/read-data').get(readData.readTestMetaData);
+  router.route('/update-data').post(updateData.updateTestMetaData);
+  router.route('/delete-data').delete(deleteData.deleteTestMetaData);
+};
