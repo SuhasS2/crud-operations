@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const testData = require('../models/registratioAndTestSchema');
 
+<<<<<<< HEAD
 // module.exports = function () {
 //     router.post('/create-data', async (req, res) => {
 //     const { grade, addRegStartDate, addRegStopDate, addTestStartDate, addTestStopDate } = req.body;
@@ -35,3 +36,16 @@ async function createTestMetaData(req,res) {
 
 module.exports = {createTestMetaData};
 module.exports = {router};
+=======
+module.exports = function () {
+    router.post('/create-data', async (req, res) => {
+    const { grade, addRegStartDate, addRegStopDate, addTestStartDate, addTestStopDate } = req.body;
+    await testData.insertOne({
+        grade: grade, registrationStartDate: addRegStartDate, registrationStoptDate: addRegStopDate,
+        testStartDate: addTestStartDate, testStopDate: addTestStopDate
+    })
+        res.send({ message: `Test Data Added successfully` });
+    });
+    return router;
+};
+>>>>>>> 4ea934be5463760da9d2d605aca56e8fb88a80cf
