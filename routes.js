@@ -1,7 +1,4 @@
 const express = require("express");
-//var app = express();
-//const router = express.Router();
-
 const createData = require('./controllers/create');
 const readData = require('./controllers/read');
 const updateData = require('./controllers/update');

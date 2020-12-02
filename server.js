@@ -26,7 +26,3 @@ routes.initialize(app);
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`);
 });
-
-
-
-
