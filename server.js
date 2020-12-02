@@ -11,22 +11,18 @@ const url = process.env.MONGODB_URL;
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const db = mongoose.connection; 
+const db = mongoose.connection;
+const app = express();
 
-db.on('error', err => {
-    console.log('Mongoose error', err);
+//routes are initilized
+const router = express.Router();
+routes.init(router);
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(app.router);
+routes.initialize(app);
+
+app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}`);
 });
-
-db.once('open', async () => {
-    const app = express();
-
-    app.use(cors());
-    app.use(bodyParser.json());
-    app.use('/',routes());
-    
-    app.listen(port, () => {
-        console.log(`Listening at http://localhost:${port}`);
-    });
-})
-
-
