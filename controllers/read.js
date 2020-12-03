@@ -3,7 +3,7 @@ const testData = require('../models/registratioAndTestSchema');
 
 async function readTestMetaData(req,res) {
     try{
-        const getTestData = await testData.find({});
+        const getTestData = await testData.collection.find({});
         res.status(200).send(getTestData);
         //console.log(getTestData);
     } catch(err){
