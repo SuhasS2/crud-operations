@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+'use strict';
 const testData = require('../models/registratioAndTestSchema');
 
 async function updateTestMetaData(req, res) {
@@ -25,4 +24,4 @@ async function updateTestMetaData(req, res) {
 }
 
 module.exports = {updateTestMetaData};
-module.exports = {router};
+//module.exports = {router};

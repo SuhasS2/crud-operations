@@ -15,14 +15,17 @@ const db = mongoose.connection;
 const app = express();
 
 //routes are initilized
+app.use(cors());
+app.use(bodyParser.json());
 const router = express.Router();
 routes.init(router);
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(app.router);
-routes.initialize(app);
+/*app.get('/people', function (req, res) {
+    res.send('hello');
+});*/
 
+app.use('/api', router);
+    
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`);
 });

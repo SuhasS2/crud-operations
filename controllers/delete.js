@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+'use strict';
 const testData = require('../models/registratioAndTestSchema');
 
 async function deleteTestMetaData(req,res) {
@@ -17,4 +16,4 @@ async function deleteTestMetaData(req,res) {
 }
 
 module.exports = {deleteTestMetaData};
-module.exports = {router};
+//module.exports = {router};
