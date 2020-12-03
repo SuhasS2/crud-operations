@@ -3,14 +3,14 @@ const testData = require('../models/registratioAndTestSchema');
 
 async function deleteTestMetaData(req,res) {
     const deleteDataValue = req.body;
-    if (!req.body) {
-        res.status(200).send({});
+    if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
+        res.status(200).send("Error ! Empty data cannot be added");
     } else {
         try {
-            await testData.deleteOne({grade : deleteDataValue})
+            await testData.collection.findOneAndDelete(deleteDataValue)
             res.status(200).send({ message: "Data got Deleted" });
         } catch(err){
-            console.log("Error:(");
+            console.log("Error:(",err);
         }
     }  
 }

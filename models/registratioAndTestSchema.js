@@ -8,4 +8,4 @@ const testMetaData = new mongoose.Schema({
     testStopDate : Date
 })
 
-module.exports = mongoose.model('system',testMetaData);
+module.exports = mongoose.model('testdatas',testMetaData);

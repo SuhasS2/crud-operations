@@ -9,9 +9,14 @@ const routes = require('./routes');
 const port = 5000;
 const url = process.env.MONGODB_URL;
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => { 
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('connected');
+        }
+      });
 
-const db = mongoose.connection;
 const app = express();
 
 //routes are initilized

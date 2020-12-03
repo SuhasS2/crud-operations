@@ -11,6 +11,6 @@ exports.init = (router) => {
 
   router.route('/create-data').post(createData.createTestMetaData);
   router.route('/read-data').get(readData.readTestMetaData);
-  router.route('/update-data').post(updateData.updateTestMetaData);
+  router.route('/update-data').put(updateData.updateTestMetaData);
   router.route('/delete-data').delete(deleteData.deleteTestMetaData);
 };
