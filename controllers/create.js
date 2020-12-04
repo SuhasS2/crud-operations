@@ -1,6 +1,7 @@
 'use strict';
-const schema = require('../util/schemaValidation');
+//const schema = require('../util/schemaValidation');
 const testData = require('../models/registratioAndTestSchema');
+const moment = require('moment');
 
 async function createTestMetaData(req,res) {
     const createDataValue = req.body;
@@ -10,14 +11,9 @@ async function createTestMetaData(req,res) {
         res.status(200).send("Error ! Empty data cannot be added");
     } else {
         try {
-            const inputDataValue = await schema.schemaValidation(createDataValue, schema.testMetaDataValidation);
-            console.log(inputDataValue);
-            if(inputDataValue.details){
-                res.status(200).send({success: false, message: inputDataValue.details});
-            } else{
-            await testData.collection.insertOne(inputDataValue) ;
+            await testData.collection.insertOne(createDataValue) ;
             res.status(200).send({ message: "Data Added Successfully" });
-        }} catch(err){
+        } catch(err){
             console.log(err);
         }
     }
