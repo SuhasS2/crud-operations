@@ -12,17 +12,16 @@ const testMetaDataValidation = Joi.object().keys({
 });
 
 async function schemaValidation(inputArrayValue, schemaType) {
-    const uploadValue = [];
+    const addedValue = [];
   
     if (inputArrayValue.length > 0) {
       for (let i = 0; i<inputArrayValue.length; i++) {
         const {error, value} = Joi.validate(inputArrayValue[i], schemaType);
         if (error) {
           console.log(' Record cannot be validated against DB Schema', error);
-          return error;
           break;
         } else {
-          uploadValue.push(value);
+          addedValue.push(value);
         }
       }
       return uploadValue;
@@ -30,7 +29,6 @@ async function schemaValidation(inputArrayValue, schemaType) {
       const {error, value} = Joi.validate(inputArrayValue, schemaType);
       if (error) {
         console.log('Record cannot be validated against the schema', error);
-        return error;
       } else {
         uploadValue.push(value);
       }
