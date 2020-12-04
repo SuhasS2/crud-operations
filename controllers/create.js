@@ -11,6 +11,7 @@ async function createTestMetaData(req,res) {
     } else {
         try {
             const inputDataValue = await schema.schemaValidation(createDataValue, schema.testMetaDataValidation);
+            console.log(inputDataValue);
             if(inputDataValue.details){
                 res.status(200).send({success: false, message: inputDataValue.details});
             } else{

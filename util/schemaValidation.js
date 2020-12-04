@@ -1,10 +1,10 @@
 "use strict";
-const Joi = require('@hapi/joi');
-//Joi.objectId = require('joi-objectid')(Joi);
+const Joi = require('@hapi/joi')
+Joi.objectId = require('joi-objectid')(Joi)
 const stringPattern = /^[a-zA-Z-]+$/;
 
 const testMetaDataValidation = Joi.object().keys({
-    grade : Joi.string().min(1).trim().regex(stringPattern).required(),
+    grade : Joi.string().min(1).trim().regex().required(),
     registrationStartDate : Joi.date().iso().required(),
     registrationStoptDate : Joi.date().iso().required(),
     testStartDate : Joi.date().iso().required(),
@@ -36,4 +36,4 @@ async function schemaValidation(inputArrayValue, schemaType) {
     }
   }
 
-  module.exports = {schemaValidation,testMetaDataValidation};
+  module.exports = {schemaValidation};

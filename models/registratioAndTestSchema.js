@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const testMetaData = new mongoose.Schema({
     grade : String,
     registrationStartDate : Date,
-    registrationStoptDate : Date,
+    registrationStopDate : Date,
     testStartDate : Date,
     testStopDate : Date
 })

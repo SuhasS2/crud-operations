@@ -9,14 +9,14 @@ async function updateTestMetaData(req, res) {
         res.status(200).send("Error ! Empty data cannot be added");
     } else {
         try {
-            console.log(req.body);
+            console.log(updateDataValue);
             await testData.collection.updateOne({ grade: updateDataValue[0].grade }, {
                 $set:
                 { 
-                    registrationStartDate: moment(updateDataValue[0].registrationStartDate).format(),
-                    registrationStoptDate: moment(updateDataValue[0].registrationStoptDate).format(),
-                    testStartDate: updateDataValue[0].testStartDate,
-                    testStopDate: new Date(`${updateDataValue[0].testStopDate}`).getTime()
+                    registrationStartDate: moment(updateDataValue[1].registrationStartDate).toDate(),
+                    registrationStopDate: moment(updateDataValue[1].registrationStopDate).toDate(),
+                    testStartDate: moment(updateDataValue[1].testStartDate).toDate(),
+                    testStopDate: moment(updateDataValue[1].testStopDate).toDate() 
                 }
             });
             res.status(200).send({ message: "Update Success" });
