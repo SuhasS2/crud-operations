@@ -3,8 +3,8 @@ const testData = require('../models/registratioAndTestSchema');
 
 async function readTestMetaData(req,res) {
     try{
-        const getTestData = await testData.find({});
-        //res.status(200).send(getTestData);
+        const getTestData = await testData.findOne({});
+        res.status(200).send(getTestData);
         console.log("Reading Data",getTestData);
     } catch(err){
         console.log(err);

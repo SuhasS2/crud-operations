@@ -1,5 +1,6 @@
 'use strict';
-const testData = require('../models/registratioAndTestSchema');
+const testMetaData = require('../models/registratioAndTestSchema');
+//const {Validator} = require('node-input-validator');
 //const updateValidator = require('../util/schemaValidation')
 const moment = require('moment');
 
@@ -9,13 +10,19 @@ async function updateTestMetaData(req, res) {
         res.status(200).send("Error ! Empty data cannot be added");
     } else {
         try {
-            await testData.collection.updateOne({ grade: updateDataValue[0].grade }, {
+            //const nonEmptyData = updateDataValue.filter(function(value){return(value[1]!==undefined || value[1]!==null || value[1]!=="");});
+            //console.log(nonEmptyData);
+            await testMetaData.collection.updateOne({ testVersion : updateDataValue.testVersion }, {
                 $set:
-                { 
-                    registrationStartDate: new Date(updateDataValue[1].registrationStartDate).getTime(),
-                    registrationStopDate: new Date(updateDataValue[1].registrationStopDate).getTime(),
-                    testStartDate: new Date(updateDataValue[1].testStartDate).getTime(),
-                    testStopDate: new Date(updateDataValue[1].testStopDate).getTime() 
+                { registrationData: {
+                    regWindowStartDateTime: new Date(updateDataValue.regWindowStartDateTime).getTime(),
+                    regWindowStopDateTime: new Date(updateDataValue.regWindowStopDateTime).getTime()}, 
+                  testData : {
+                      testStartDateTime: new Date(updateDataValue.testStartDateTime).getTime(),
+                      testEndDateTime: new Date(updateDataValue.testEndDateTime).getTime() },
+                   resultStats : {
+                       resultDateTime: new Date(updateDataValue.resultDateTime).getTime(),
+                       assessmentReportDateTime: new Date(updateDataValue.assessmentReportDateTime).getTime()}
                 }
             });
             res.status(200).send({ message: "Update Success" });
