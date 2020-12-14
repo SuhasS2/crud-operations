@@ -7,7 +7,7 @@ const testMetaData = require('../models/registratioAndTestSchema');
 async function updateRegData(req, res) {
     const updateDataValue = req.body;
     if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
-        res.status(200).send("Error ! Empty data cannot be added");
+        res.status(400).send("Empty data should not be used");
     } else {
         try {
             await testMetaData.collection.findOneAndUpdate({ testVersion : updateDataValue.testVersion }, {
@@ -17,7 +17,7 @@ async function updateRegData(req, res) {
                     "registrationData.regWindowStopDateTime": new Date(`${req.body.regWindowStopDateTime}`).getTime()
                 }
             });
-            res.status(200).send({ message: "Update Success" });
+            res.status(200).send({ message: "Updated Registration date & time successfully" });
         } catch(err){
             console.log("Error:(",err);
         }
