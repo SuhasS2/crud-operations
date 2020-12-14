@@ -1,5 +1,5 @@
 'use strict';
-const testData = require('../models/registratioAndTestSchema');
+const testData = require('../models/bnatTestData');
 
 async function readTestMetaData(req,res) {
     try{

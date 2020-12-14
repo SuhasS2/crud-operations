@@ -19,8 +19,8 @@ exports.init = (router) => {
   router.route('/read-data').get(readData.readTestMetaData);
   router.route('/update-registrationdata').put(updateRegistrationData.updateRegData);
   router.route('/update-testdatetime').put(updateTestData.updateTestDateTime);
-  router.route('/update-testcard-data').put(updateTestCardData.updateTestCardData);
-  router.route('/update-syllabus-eligibility').put(updateTestSyllabus.updateTestSyllabus);
+  router.route('/update-testcarddata').put(updateTestCardData.updateTestCardData);
+  router.route('/update-syllabuseligibility').put(updateTestSyllabus.updateTestSyllabus);
   router.route('/update-resultdata').put(updateResultData.updateResultData);
   router.route('/update-registrationstatus').put(updateRegistrationActiveData.updateRegStatus);
   router.route('/delete-data').delete(deleteData.deleteTestMetaData);
