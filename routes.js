@@ -1,13 +1,13 @@
 "use strict";
 const createData = require('./controllers/create');
 const readData = require('./controllers/read');
-const updateRegistrationData = require('./controllers/updateRegData');
-const updateTestData = require('./controllers/updateTestDateTime');
-const updateTestCardData = require('./controllers/updateTestCardData');
-const updateTestSyllabus = require('./controllers/updateTestSyllabus');
-const updateResultData = require('./controllers/updateResultData');
-const updateRegistrationActiveData = require('./controllers/updateRegActiveStatus');
-const deleteData = require('./controllers/delete');
+const updateRegistrationData = require('./controllers/updateTestDetails');
+const updateTestData = require('./controllers/updateTestDetails');
+const updateTestCardData = require('./controllers/updateTestDetails');
+const updateTestSyllabus = require('./controllers/updateTestDetails');
+const updateResultData = require('./controllers/updateTestDetails');
+const updateRegistrationActiveData = require('./controllers/updateTestDetails');
+//const deleteData = require('./controllers/delete');
 
 
 exports.init = (router) => {
@@ -17,11 +17,11 @@ exports.init = (router) => {
 
   router.route('/create-data').post(createData.createTestMetaData);
   router.route('/read-data').get(readData.readTestMetaData);
-  router.route('/update-registrationdata').put(updateRegistrationData.updateRegData);
-  router.route('/update-testdatetime').put(updateTestData.updateTestDateTime);
-  router.route('/update-testcarddata').put(updateTestCardData.updateTestCardData);
-  router.route('/update-syllabuseligibility').put(updateTestSyllabus.updateTestSyllabus);
-  router.route('/update-resultdata').put(updateResultData.updateResultData);
-  router.route('/update-registrationstatus').put(updateRegistrationActiveData.updateRegStatus);
-  router.route('/delete-data').delete(deleteData.deleteTestMetaData);
+  router.route('/update/registration-data').put(updateRegistrationData.updateRegData);
+  router.route('/update/test-time').put(updateTestData.updateTestDateTime);
+  router.route('/update/testcard-data').put(updateTestCardData.updateTestCardData);
+  router.route('/update/testsyllabuseligibility').put(updateTestSyllabus.updateTestSyllabus);
+  router.route('/update/result-data').put(updateResultData.updateResultData);
+  router.route('/update/registrationstatus').put(updateRegistrationActiveData.updateRegStatus);
+  // router.route('/delete-data').post(deleteData.deleteTestMetaData);
 };

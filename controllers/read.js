@@ -3,7 +3,7 @@ const testData = require('../models/bnatTestData');
 
 async function readTestMetaData(req,res) {
     try{
-        const getTestData = await testData.findOne({});
+        const getTestData = await testData.find({registrationActiveStatus : {$ne : false}});
         res.status(200).send(getTestData);
         console.log("Reading Data",getTestData);
     } catch(err){

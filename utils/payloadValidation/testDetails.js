@@ -1,5 +1,8 @@
 'use strict';
 
+const { expression, date } = require('joi');
+const { validate } = require('../../models/bnatTestData');
+
 const Joi = require('@hapi/joi').extend(require('@hapi/joi-date'));
 
 
@@ -33,7 +36,7 @@ const testDetails = Joi.object({
 });
 
 const resultDetails = Joi.object({
-  'status': Joi.string().min(2).max(1500).trim().required(),
+  'status': Joi.string().min(2).max(1500).trim(),
   'resultDateTime': Joi.date().utc().required(),
   'assessmentReportDateTime': Joi.date().utc().required(),
 });
@@ -75,26 +78,8 @@ function payloadValidation(data) {
   }
 }
 
-function updatePayloadValidationOfRegData(data) {
-  const regDataValidation = {};
-  if (!data) {
-    regDataValidation['success'] = false;
-    regDataValidation['message'] = 'Updation failed due to empty field value';
-    return regDataValidation;
-  } else {
-    const updateStatus = testDataDetails.validate(data);
-    if (updateStatus.error) {
-      regDataValidation['success'] = false;
-      regDataValidation['message'] = updateStatus.error.details[0].message;
-      return regDataValidation;
-    } else {
-      regDataValidation['success'] = true;
-      regDataValidation['message'] = 'Input data is valid';
-      regDataValidation['value'] = updateStatus.value;
-    }
-  }
-}
 
+/*
 function updatePayloadValidationOfTestCardData(data) {
   const testCardValidation = {};
   if (!data) {
@@ -193,10 +178,9 @@ function updatePayloadValidationOfRegStatus(data) {
       regStatusValidation['value'] = updateStatus.value;
     }
   }
-}
+}*/
 
 
-module.exports = {
-  payloadValidation, updatePayloadValidationOfRegData, updatePayloadValidationOfRegStatus, updatePayloadValidationOfResultDateTime, updatePayloadValidationOfSyllabus,
-  updatePayloadValidationOfTestCardData, updatePayloadValidationofTestDateTime
-};
+module.exports = {payloadValidation} //updatePayloadValidationOfRegStatus, updatePayloadValidationOfResultDateTime, updatePayloadValidationOfSyllabus,
+ // updatePayloadValidationOfTestCardData, updatePayloadValidationofTestDateTime
+//};
