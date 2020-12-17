@@ -20,8 +20,8 @@ exports.init = (router) => {
   router.route('/update/registration-data').put(updateRegistrationData.updateRegistrationTime);
   router.route('/update/test-time').put(updateTestData.updateTestDateTime);
   router.route('/update/testcard-data').put(updateTestCardData.updateTestCardData);
-  router.route('/update/testsyllabuseligibility').put(updateTestSyllabus.updateTestDetails);
+  router.route('/update/test-details').put(updateTestSyllabus.updateTestDetails);
   router.route('/update/result-data').put(updateResultData.updateResultTime);
-  router.route('/update/registrationstatus').put(updateRegistrationActiveData.updateRegistrationStatus);
+  router.route('/update/registration-status').put(updateRegistrationActiveData.updateRegistrationStatus);
   // router.route('/delete-data').post(deleteData.deleteTestMetaData);
 };

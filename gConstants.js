@@ -44,14 +44,14 @@ const JEEPage = 'JEE';
 const K10Page = 'K10';
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
 const currentApiVersion = parseInt(process.env.API_VERSION);
-const case1 = 'registrationStatus';
-const case2 = 'registrationDate';
-const case3 = 'resultdate';
-const case4 = 'testCardData';
-const case5 = 'testDate';
-const case6 = 'syllabuseligibility';
+const registrationStatus = 'registrationStatus';
+const registrationDate = 'registrationDate';
+const resultdate = 'resultdate';
+const testCardData = 'testCardData';
+const testDate = 'testDate';
+const testDetails = 'testDetails';
 
 module.exports = {register, phone, oneK, nineK, otpExp, oneM, otpExpires, pswdMin, pswdMax, bnatV2Test, emptyPayload, registerSuccess, numberExists, numberNotVerified, 
     registerFail, bnatLandingPage, bnatExamDateTime, noPhoneNumber, loginSuccess, pwdIncorrect, mobileNoRequired, frgtPswd, pswdRequired, rateLimitMaxReg, tokenExpireTime, 
     userDomain, examDay, examTime, testVersion, gradeClass4to10, gradeClass11to12, regTemplate, forgotPasswordTemplate, otpTemplate, JEEPage, K10Page, saltRounds, currentApiVersion,
-case1,case2,case3,case4,case5,case6};
+registrationStatus,registrationDate,resultdate,testCardData,testDate,testDetails};

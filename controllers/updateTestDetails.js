@@ -10,7 +10,7 @@ async function updateRegistrationStatus(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(regActiveStats,gConst.case1);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(regActiveStats,gConst.registrationStatus);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: regActiveStats.testVersion }, {
                     $set:
@@ -35,7 +35,7 @@ async function updateRegistrationTime(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateDataValue,gConst.case2);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateDataValue,gConst.registrationDate);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateDataValue.testVersion }, {
                     $set:
@@ -61,7 +61,7 @@ async function updateResultTime(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateResultDate,gConst.case3);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateResultDate,gConst.resultdate);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateResultDate.testVersion }, {
                     $set:
@@ -87,7 +87,7 @@ async function updateTestCardData(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestCardValues,gConst.case4);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestCardValues,gConst.testCardData);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateTestCardValues.testVersion }, {
                     $set:
@@ -112,7 +112,7 @@ async function updateTestDateTime(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestdata,gConst.case5);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestdata,gConst.testDate);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateTestdata.testVersion }, {
                     $set:
@@ -138,7 +138,7 @@ async function updateTestDetails(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfTestData(updatesyllabus,gConst.case6);
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updatesyllabus,gConst.testDetails);
             if (validationResult.success) {
                 await bTDModel.collection.updateOne({ testVersion: updatesyllabus.testVersion },{
                     $set :{

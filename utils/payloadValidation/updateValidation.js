@@ -61,31 +61,31 @@ function updatePayloadValidationOfTestData(data, type) {
       } else {
         let validationStatus = '';
         switch (type) {
-          case gConst.case2 : validationStatus = registrationDateTime.validate({
+          case gConst.registrationDate : validationStatus = registrationDateTime.validate({
             regWindowStartDateTime: data.regWindowStartDateTime,
             regWindowStopDateTime: data.regWindowStopDateTime,
             pageUrl : data.pageUrl
           });
             break;
-          case gConst.case4: validationStatus = testCardDetails.validate({
+          case gConst.testCardData: validationStatus = testCardDetails.validate({
             color: data.color
           });
             break;
-          case gConst.case1: validationStatus = testDataDetails.validate({
+          case gConst.registrationStatus: validationStatus = testDataDetails.validate({
             registrationActiveStatus: data.registrationActiveStatus
           });
             break;
-          case gConst.case5: validationStatus = testDateTime.validate({
+          case gConst.testDate: validationStatus = testDateTime.validate({
             testStartDateTime: data.testStartDateTime,
             testEndDateTime: data.testEndDateTime
           });
             break;
-          case gConst.case3: validationStatus = resultDateTime.validate({
+          case gConst.resultdate: validationStatus = resultDateTime.validate({
             resultDateTime: data.resultDateTime,
             assessmentReportDateTime: data.assessmentReportDateTime
           });
             break;
-          case gConst.case6: validationStatus = testDetails.validate({
+          case gConst.testDetails: validationStatus = testDetails.validate({
             syllabus: data.syllabus,
             eligibility: data.eligibility,
             duration: data.duration,
