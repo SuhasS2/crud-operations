@@ -49,3 +49,23 @@
 {"topic":"Storing test details","message":"TypeError: Cannot read property 'success' of undefined","level":"error"}
 {"topic":"Storing test details","message":"TypeError: Cannot read property 'success' of undefined","level":"error"}
 {"topic":"Storing test details","message":"ReferenceError: testMetaData is not defined","level":"error"}
+{"topic":"Storing test details","message":"TypeError: Update document requires atomic operators","level":"error"}
+{"topic":"Storing test details","message":"TypeError: Update document requires atomic operators","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $updates. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $updates. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $updates. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $updates. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"TypeError: final argument to `executeLegacyOperation` must be a callback","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $update. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $update. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$push' in 'do.$push' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$set' in 'do.$set' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$exists' in 'when.updatesyllabus.testMode.$exists' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$ne' in 'when.updatesyllabus.testMode.$ne' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$switch' in '$switch' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$ne' in 'switch.branches.0.case.$ne' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$ne' in 'switch.branches.0.case.$ne' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $switch. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: Unknown modifier: $switch. Expected a valid update modifier or pipeline-style update specified as an array","level":"error"}
+{"topic":"Storing test details","message":"MongoError: The dollar ($) prefixed field '$ne' in 'switch.branches.0.case.$ne' is not valid for storage.","level":"error"}
+{"topic":"Storing test details","message":"TypeError: Cannot read property '1' of undefined","level":"error"}

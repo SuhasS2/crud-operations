@@ -2,14 +2,15 @@
 const inputValidation = require('../utils/payloadValidation/updateValidation');
 const bTDModel = require('../models/bnatTestData');
 const logger = require('../config/logger');
+const gConst = require('../gConstants');
 
-async function updateRegStatus(req, res) {
+async function updateRegistrationStatus(req, res) {
     const regActiveStats = req.body;
     try {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(regActiveStats,'registrationStatus');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(regActiveStats,gConst.case1);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: regActiveStats.testVersion }, {
                     $set:
@@ -28,20 +29,19 @@ async function updateRegStatus(req, res) {
     }
 }
 
-async function updateRegData(req, res) {
+async function updateRegistrationTime(req, res) {
     const updateDataValue = req.body;
     try {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(updateDataValue,'registrationDate');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateDataValue,gConst.case2);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateDataValue.testVersion }, {
                     $set:
                     {
                         'registrationData.regWindowStartDateTime': new Date(`${req.body.regWindowStartDateTime}`).getTime(),
-                        'registrationData.regWindowStopDateTime': new Date(`${req.body.regWindowStopDateTime}`).getTime(),
-                        'registrationData.pageUrl': updateDataValue.pageUrl
+                        'registrationData.regWindowStopDateTime': new Date(`${req.body.regWindowStopDateTime}`).getTime()
                     }
                 });
                 res.status(200).send({ message: 'Updated Registration date & time successfully' });
@@ -55,13 +55,13 @@ async function updateRegData(req, res) {
     }
 }
 
-async function updateResultData(req, res) {
+async function updateResultTime(req, res) {
     const updateResultDate = req.body;
     try {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(updateResultDate,'resultdate');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateResultDate,gConst.case3);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateResultDate.testVersion }, {
                     $set:
@@ -87,7 +87,7 @@ async function updateTestCardData(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(updateTestCardValues,'testCardData');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestCardValues,gConst.case4);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateTestCardValues.testVersion }, {
                     $set:
@@ -112,7 +112,7 @@ async function updateTestDateTime(req, res) {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(updateTestdata,'testDate');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updateTestdata,gConst.case5);
             if (validationResult.success) {
                 await bTDModel.collection.findOneAndUpdate({ testVersion: updateTestdata.testVersion }, {
                     $set:
@@ -132,20 +132,21 @@ async function updateTestDateTime(req, res) {
     }
 }
 
-async function updateTestSyllabus(req, res) {
+async function updateTestDetails(req, res) {
     const updatesyllabus = req.body;
     try {
         if (!req.body || Object.keys(req.body).length === 0 && req.body.constructor === Object) {
             res.status(400).send('Empty data should not be used');
         } else {
-            const validationResult = inputValidation.updatePayloadValidationOfRegData(updatesyllabus,'syllabuseligibility');
+            const validationResult = inputValidation.updatePayloadValidationOfTestData(updatesyllabus,gConst.case6);
             if (validationResult.success) {
-                await bTDModel.collection.findOneAndUpdate({ testVersion: updatesyllabus.testVersion }, {
-                    $set:
-                    {
+                await bTDModel.collection.updateOne({ testVersion: updatesyllabus.testVersion },{
+                    $set :{
                         'testData.syllabus': `${updatesyllabus.syllabus}`,
                         'testData.eligibility': `${updatesyllabus.eligibility}`,
-                        'testData.duration': `${updatesyllabus.duration}`
+                        'testData.duration': `${updatesyllabus.duration}`,
+                        'testData.testMode' : `${updatesyllabus.testMode}`,
+                        'testData.target' : `${updatesyllabus.target}`
                     }
                 });
                 res.status(200).send({ message: 'Updated test syllabus, eligibility & duration successfully' });
@@ -159,4 +160,4 @@ async function updateTestSyllabus(req, res) {
     }
 }
 
-module.exports = {updateRegData,updateRegStatus,updateResultData,updateTestCardData,updateTestDateTime,updateTestSyllabus}
+module.exports = {updateRegistrationTime,updateRegistrationStatus,updateResultTime,updateTestCardData,updateTestDateTime,updateTestDetails}

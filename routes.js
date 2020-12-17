@@ -17,11 +17,11 @@ exports.init = (router) => {
 
   router.route('/create-data').post(createData.createTestMetaData);
   router.route('/read-data').get(readData.readTestMetaData);
-  router.route('/update/registration-data').put(updateRegistrationData.updateRegData);
+  router.route('/update/registration-data').put(updateRegistrationData.updateRegistrationTime);
   router.route('/update/test-time').put(updateTestData.updateTestDateTime);
   router.route('/update/testcard-data').put(updateTestCardData.updateTestCardData);
-  router.route('/update/testsyllabuseligibility').put(updateTestSyllabus.updateTestSyllabus);
-  router.route('/update/result-data').put(updateResultData.updateResultData);
-  router.route('/update/registrationstatus').put(updateRegistrationActiveData.updateRegStatus);
+  router.route('/update/testsyllabuseligibility').put(updateTestSyllabus.updateTestDetails);
+  router.route('/update/result-data').put(updateResultData.updateResultTime);
+  router.route('/update/registrationstatus').put(updateRegistrationActiveData.updateRegistrationStatus);
   // router.route('/delete-data').post(deleteData.deleteTestMetaData);
 };
